@@ -48,6 +48,7 @@ developing programs using the %{cname} library.
 autoreconf
 
 %build
+export CFLAGS="%{optflags} -fPIC"
 %configure2_5x
 %make
 
