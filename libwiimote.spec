@@ -12,6 +12,8 @@ Name: %{name}
 Version: %{version}
 Release: %{release}
 Source0:  http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tgz
+Patch0: libwiimote-0.4-bluez4.patch
+Patch1: libwiimote-0.4-link.patch
 License: GPL
 Group: System/Kernel and hardware
 Url: http://libwiimote.sourceforge.net/
@@ -45,10 +47,12 @@ developing programs using the %{cname} library.
 
 %prep
 %setup -q
-autoreconf
+%patch0 -p0
+%patch1 -p0
 
 %build
 export CFLAGS="%{optflags} -fPIC"
+autoreconf -fi
 %configure2_5x
 %make
 
