@@ -1,6 +1,6 @@
 %define name libwiimote
 %define version 0.4
-%define release %mkrel 5
+%define release %mkrel 6
 
 %define lib_major 0
 %define cname cwiimote
