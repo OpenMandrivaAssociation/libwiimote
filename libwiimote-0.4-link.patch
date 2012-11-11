@@ -1,0 +1,33 @@
+--- config.mk.in.link	2010-02-21 12:27:23.000000000 +0100
++++ config.mk.in	2010-02-21 12:27:42.000000000 +0100
+@@ -9,6 +9,7 @@
+ #CFLAGS:=-O3 -march=athlon-xp -Wall -pipe
+ CFLAGS:=-Os -Wall -pipe $(DEFS) @CFLAGS@
+ INCLUDES:=-I$(topdir)/src
+-LIBS:=@LDFLAGS@
++LDFLAGS:=@LDFLAGS@
++LIBS:=@LIBS@
+ 
+ VPATH=:$(BINDIR) $(LIBDIR)
+--- configure.in.link	2010-02-21 12:29:28.000000000 +0100
++++ configure.in	2010-02-21 12:29:49.000000000 +0100
+@@ -13,6 +13,8 @@
+ AC_CHECK_LIB([bluetooth], [hci_read_remote_name],
+ 	     [], [AC_MSG_ERROR([We require BlueZ])])
+ 
++AC_CHECK_LIB([m], [asin])
++
+ AC_CONFIG_FILES([config.mk
+ 		 Makefile
+                  src/Makefile
+--- src/Makefile.in.lin	2010-02-21 12:30:46.000000000 +0100
++++ src/Makefile.in	2010-02-21 12:31:03.000000000 +0100
+@@ -33,7 +33,7 @@
+ all: libcwiimote.a libcwiimote.so
+ 
+ libcwiimote.so: $(SOURCES) $(HEADERS)
+-	$(CC) $(CFLAGS) $(INCLUDES) $(SOURCES) -shared -o $@  $(LIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) $(INCLUDES) $(SOURCES) -shared -o $@  $(LIBS)
+ 	@cp $@ $(LIBDIR)
+ 
+ libcwiimote.a: $(SOURCES) $(HEADERS)

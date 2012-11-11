@@ -1,0 +1,22 @@
+--- configure.in.bluez	2010-02-21 12:20:07.000000000 +0100
++++ configure.in	2010-02-21 12:20:29.000000000 +0100
+@@ -10,7 +10,7 @@
+ AC_PROG_INSTALL
+ 
+ # Checks for BlueZ.
+-AC_CHECK_LIB([bluetooth], [hci_remote_name],
++AC_CHECK_LIB([bluetooth], [hci_read_remote_name],
+ 	     [], [AC_MSG_ERROR([We require BlueZ])])
+ 
+ AC_CONFIG_FILES([config.mk
+--- src/wiimote_link.c.bluz	2010-02-21 12:23:27.000000000 +0100
++++ src/wiimote_link.c	2010-02-21 12:23:57.000000000 +0100
+@@ -95,7 +95,7 @@
+ 	return 0;
+     }
+ 
+-    if (hci_remote_name(hci_sock, &dev->bdaddr, WIIMOTE_CMP_LEN, dev_name, 5000)) {
++    if (hci_read_remote_name(hci_sock, &dev->bdaddr, WIIMOTE_CMP_LEN, dev_name, 5000)) {
+ 	wiimote_error("is_wiimote(): Error reading device name: %m");
+ 	return 0;
+     }
