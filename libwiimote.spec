@@ -78,3 +78,28 @@ rm -rf %{buildroot}
 %dir %{_includedir}/lib%{cname}
 %{_includedir}/lib%{cname}/*.h
 %{_libdir}/lib%{cname}.a
+
+
+%changelog
+* Sun Dec 05 2010 Oden Eriksson <oeriksson@mandriva.com> 0.4-6mdv2011.0
++ Revision: 609786
+- rebuild
+
+* Sun Feb 21 2010 Funda Wang <fwang@mandriva.org> 0.4-5mdv2010.1
++ Revision: 509123
+- bump rel
+- fix build with latest bluez
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - rebuild
+    - rebuild
+
+  + Pixel <pixel@mandriva.com>
+    - do not call ldconfig in %%post/%%postun, it is now handled by filetriggers
+
+* Fri Dec 21 2007 Olivier Blin <oblin@mandriva.com> 0.4-1mdv2008.1
++ Revision: 136531
+- build with -fPIC
+- initial libwiimote package
+- create libwiimote
+
