@@ -16,7 +16,7 @@ Patch0: libwiimote-0.4-bluez4.patch
 Patch1: libwiimote-0.4-link.patch
 License: GPL
 Group: System/Kernel and hardware
-Url: http://libwiimote.sourceforge.net/
+Url: https://libwiimote.sourceforge.net/
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: bluez-devel
 
